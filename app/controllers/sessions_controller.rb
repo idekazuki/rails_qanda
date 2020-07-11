@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       render 'home/index'
     end
   end
+  
 
   def destroy
     session.delete(:user_id)
