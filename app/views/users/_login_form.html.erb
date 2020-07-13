@@ -1,12 +1,22 @@
-<h1>ログイン</h1>
-<%= form_with scope: :session, url: login_path do |f| %>
-  <div class="form-group">
-    <%= f.label :name, 'user name' %>
-    <%= f.text_field :name, class: 'form-control' %>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Log In</h5>
+            <%= form_with scope: :session, url: login_path do |f| %>
+              <div class="form-group">
+                <%= f.label :name, 'user name' %>
+                <%= f.text_field :name, class: 'form-control' %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password, 'password' %>
+                <%= f.password_field :password, class: 'form-control' %>
+              </div>
+              <%= f.submit 'login', class: 'btn btn-lg btn-primary btn-block text-uppercase rounded-pill'%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :password, 'password' %>
-    <%= f.password_field :password, class: 'form-control' %>
-  </div>
-  <%= f.submit 'login', class: 'btn btn-primary' %>
-<% end %>

@@ -30,9 +30,13 @@
                 </td>
                 <td>
                   <% if @current_user %>
-                    [ <%= link_to 'Edit', edit_question_answer_path(@question, answer) %> ]
-                    [<%= link_to 'Delete', question_answer_path(@question, answer),
-                      method: :delete, data:{ confirm: 'Are you sure?'} %> ]
+                    <% if @current_user.name == answer.name %>
+                      [ <%= link_to 'Edit', edit_question_answer_path(@question, answer) %> ]
+                      [<%= link_to 'Delete', question_answer_path(@question, answer),
+                        method: :delete, data:{ confirm: 'Are you sure?'} %> ]
+                    <% else %>
+                      解答を作成したユーザーしか編集できません
+                    <% end %>
                   <% else %>
                     編集にはログインが必要です
                   <% end %>
@@ -47,12 +51,12 @@
     </div>
     
     <h3>Post new answer</h3>
-    
+    <% if @current_user %>
     <%= form_with model: [@question, @answer], local: true do |f| %>
       <%= f.hidden_field :question_id, { value: @question.id} %>
       <div class="form-group">
         <label>Name</label>
-        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.text_field :name, readonly: true,value: @current_user.name, class: 'form-control' %>
       </div>
       <div class="form-group">
         <label>Content</label>
@@ -65,5 +69,8 @@
     <div>
       <%= link_to '> Home', root_path %>
     </div>
+    <% else %>
+      解答するにはログインしてください。
+    <% end %>
   </div>
 </div>
