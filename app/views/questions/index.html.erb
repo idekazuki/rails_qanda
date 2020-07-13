@@ -28,6 +28,10 @@
         </tbody>
     </table>
     <div>
-        <%= link_to 'New question', new_question_path, class: 'btn btn-lg btn-primary btn-block text-uppercase'  %>
+        <% if @current_user %>
+            <%= link_to 'New question', new_question_path, class: 'btn btn-lg btn-primary btn-block text-uppercase'  %>
+        <% else %>
+            質問するにはログインしてください
+        <% end %>
     </div>
 </div>
