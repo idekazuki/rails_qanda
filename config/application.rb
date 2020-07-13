@@ -10,7 +10,8 @@ module Myqanda
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    config.hosts << "4f3133df9f0b455c9f9878cacf6a830b.vfs.cloud9.ap-northeast-1.amazonaws.com"
+    config.hosts << "c38e238bf2e94a1988b9b4b08a49a5c6.vfs.cloud9.ap-northeast-1.amazonaws.com"
+    config.hosts << "powerful-temple-52125.herokuapp.com"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
