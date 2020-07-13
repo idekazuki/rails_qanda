@@ -5,7 +5,11 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to mypage_path
     else
-      render 'home/index'
+      #render 'home/index'
+      redirect_to :login_path , flash: {
+        user: user,
+        error_messages: user.errors.full_messages
+      }
     end
   end
   
